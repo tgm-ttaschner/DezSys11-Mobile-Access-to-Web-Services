@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\hagen\\Desktop\\AndroidRestFulWSExample1\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\hagen\\Desktop\\AndroidRestFulWSExample1\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\hagen\\Desktop\\AndroidRestFulWSExample1\\app\\build\\intermediates\\res\\merged\\debug\\menu\\home.xml",
+        "source": "C:\\Users\\hagen\\Desktop\\AndroidRestFulWSExample1\\app\\src\\main\\res\\menu\\home.xml"
+    },
+    {
+        "merged": "C:\\Users\\hagen\\Desktop\\AndroidRestFulWSExample1\\app\\build\\intermediates\\res\\merged\\debug\\menu\\login.xml",
+        "source": "C:\\Users\\hagen\\Desktop\\AndroidRestFulWSExample1\\app\\src\\main\\res\\menu\\login.xml"
+    }
+]
