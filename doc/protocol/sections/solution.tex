@@ -4,12 +4,37 @@
 \label{sec:Ergebnisse}
 Zur Umsetzung dieser Übung wurde das Tutorial von Android Guru befolgt. Der Sourcecode wurde importiert, wobei noch einige Fehler behoben werden mussten. Die App kann nun mit der REST Schnittstelle aus DezSys09 kommunizieren. \cite{GitHub-Repo09}
 
+\subsection{Erstellen der grafischen Oberfläche}
+\label{subsec:Erstellen der grafischen Oberfläche}
+Hierbei wurden primär die Dateien \textit{home.xml}, \textit{login.xml} und \textit{register.xml} in\\ \textit{<projectroot>/app/src/main/res/layout} bearbeitet. So sieht die Datei \textit{home.xml} aus. Zur einfacheren Generierung gibt es aber auch einen inkludierten YSIWYG-Editor.
+\begin{lstlisting}[frame=single, style=xml, caption=home.xml]
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.prgguru.example.HomeActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="fill_vertical"
+        android:layout_marginTop="20pt"
+        android:gravity="center_horizontal"
+        android:text="Welcome User"
+        android:textSize="25dip" />
+
+</FrameLayout>
+\end{lstlisting}
+
 \subsection{Anbindung einer mobilen Applikation an die Webservice-Schnittstelle}
 \label{subsec:Anbindung einer mobilen Applikation an die Webservice-Schnittstelle}
 Das erste Problem trat beim Zugreifen auf localhost im Emulator auf. Nach einer kurzen Recherche im Internet konnte ein Post auf Stackoverflow weiterhelfen. \cite{AndroidLocalhost}
 Im Simulator muss statt localhost die IP-Adresse 10.0.2.2 eingegeben werden.
 
 Ein weiteres Problem war die Realisierung von DezSys09 mittels POST und JSON, während das Tutorial auf GET ausgelegt ist. In den Klassen LoginActivity und RegisterActivity muss noch das RequestParams Objekt auf ein JSONObject geändert werden.
+\clearpage
 
 \begin{lstlisting}[frame=single, language=java, caption=Ändern des RequestParams Objekts auf ein JSONObject]
 ALT:
@@ -69,6 +94,7 @@ e.printStackTrace();
 }
 }
 \end{lstlisting}
+\clearpage
 
 Die Registrierung wurde entsprechend angepasst.
 \begin{lstlisting}[frame=single, language=java, caption=Neue Registrierung]
@@ -96,14 +122,30 @@ public void onSuccess(int statusCode, Header[] headers, String responseBody) {
 }
 \end{lstlisting}
 
-%\subsection{Registierung von Benutzern}
-%\label{subsec:Registierung von Benutzern}
-%
-%\subsection{Login und Anzeige einer Willkommensnachricht}
-%\label{subsec:Login und Anzeige einer Willkommensnachricht}
-%
-%\subsection{Simulation bzw. Deployment auf mobilem Gerät}
-%\label{subsec:Simulation bzw. Deployment auf mobilem Gerät}
+\subsection{Registierung von Benutzern}
+\label{subsec:Registierung von Benutzern}
+Die konfigurierte Schnittstelle ermöglicht nun das Anlegen eines Benutzers.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.3\linewidth]{images/reg1.png}
+		\includegraphics[width=0.3\linewidth]{images/reg2.png}
+		\includegraphics[width=0.3\linewidth]{images/reg3.png}
+	\end{center}
+\end{figure}
+
+
+\subsection{Login und Anzeige einer Willkommensnachricht}
+\label{subsec:Login und Anzeige einer Willkommensnachricht}
+Nachdem ein User in der Datenbank abgespeichert wurde, kann nun ein Login als dieser erfolgen.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.3\linewidth]{images/login1.png}
+		\includegraphics[width=0.3\linewidth]{images/login2.png}
+		\includegraphics[width=0.3\linewidth]{images/login3.png}
+	\end{center}
+\end{figure}
 
 \subsection{Ausführen der App mittels Simulationsumgebung}
 \label{subsec:Ausführen der App mittels Simulationsumgebung}
@@ -155,6 +197,21 @@ Das Builden der Applikation ist sehr einfach, da das von Android Studio erstellt
 
 Der Eintrag „Gradle project“ verweist dabei auf die Projektwurzel. (Project-Root)
 Die Erstellte Run-Konfiguration kann nun ausgeführt werden und erstellt das APK-File in den Ordner app/build/outputs/apk.
+
+\subsection{Probleme}
+\label{subsec:Probleme}
+
+- Aufbauen einer Verbindung mit localhost, musste auf 10.0.2.2 geändert werden
+- Ändern von GET zu POST und JSON
+- Neue Methode für die Überprüfung eines erfolgreichen Logins
+- Asynchroner HTTP Client, da von GET zu POST und JSON gewechselt wurde
+
+\subsection{Lessons Learned}
+\label{subsec:Lessons Learned}
+- Mit Hilfe des Tutorials wurde eine simple Android App erstellt
+- Verbindung zu einem Mobile Device von einem Web Service in Java über eine Schnittstelle
+- Vertiefung der Kenntnisse über die Kommunikation über Schnittstellen
+- Auffrischung des Umgangs mit JSON-Objekten
 
 \subsection{Link zum Repository}
 \label{subsec:Link zum Repository}
